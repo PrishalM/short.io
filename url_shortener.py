@@ -8,8 +8,5 @@ def shorten_link(full_link):
     request = requests.get(BASE_URL, params=payload)
     data = request.json()
 
-    # print(data)
     return(data)
 
-
-# shorten_link('https://www.youtube.com/watch?v=lYMM7egm_9M&ab_channel=CodePalace')

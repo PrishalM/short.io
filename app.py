@@ -1,11 +1,20 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from werkzeug import exceptions
+from url_shortener import shorten_link
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=['POST', 'GET'])
 def index():
- return render_template("index.html")
+    if request.method == 'POST':
+        URL = request.form['url_input']
+        print(URL)
+        data = shorten_link(URL)
+        short_link = data["url"]["shortLink"]
+        return render_template("url_result.html", data=short_link)
+    else:
+         return render_template('index.html')
+
 
 @app.errorhandler(exceptions.NotFound)
 def page_not_found(err):
