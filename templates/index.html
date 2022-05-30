@@ -1,4 +1,11 @@
 {% extends "layout.html" %} {% block title %}Short.io{% endblock %} {% block
 content %}
 <h1>Short.io</h1>
+
+<form id="index_form">
+  <label for="url_input">Enter URL:</label>
+  <input type="text" name="url_input" id="url_input" required />
+  <input type="submit" value="Shorten URL" />
+</form>
+
 {% endblock %}
